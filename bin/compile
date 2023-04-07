@@ -14,7 +14,9 @@ curl -s --retry 3 -o $METABASE_JAR -L $METABASE_URL
 
 METABASE_CLICKHOUSE_DRIVER_VERSION=`cat ./bin/version_clickhouse`
 
-mkdir -p "$METABASE_DIR/plugins" && cd "$METABASE_DIR/plugins"
+cd $METABASE_DIR && mkdir -p "plugins"
+
+echo -n "-----> Downloading CH... from https://github.com/ClickHouse/metabase-clickhouse-driver/releases/download/$METABASE_CLICKHOUSE_DRIVER_VERSION/clickhouse.metabase-driver.jar to plugins"
 curl -L -o "./plugins/ch.jar" https://github.com/ClickHouse/metabase-clickhouse-driver/releases/download/$METABASE_CLICKHOUSE_DRIVER_VERSION/clickhouse.metabase-driver.jar
 
 echo "done"
